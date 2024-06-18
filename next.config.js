@@ -13,6 +13,17 @@ module.exports = (phase, { defaultConfig }) => {
         ],
       },
     };
+  } else {
+    return {
+      images: {
+        remotePatterns: [
+          {
+            protocol: process.env.IMAGE_PROTOCOL ?? "https",
+            hostname: process.env.VERCEL_PROJECT_PRODUCTION_URL,
+            port: process.env.IMAGE_PORT ?? "",
+          },
+        ],
+      },
+    };
   }
-  return {};
 };

@@ -1,2 +1,2 @@
 
-export const ImageUrl = !process.env.VERCEL_PROJECT_PRODUCTION_URL ? `http://localhost:3000/images` : `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}/images`;
+export const ImageUrl = (process.env.VERCEL_PROJECT_PRODUCTION_URL === 'localhost' || process.env.NODE_ENV === 'development')  ? `http://localhost:3000/images` : `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}/images`;

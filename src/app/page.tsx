@@ -2,6 +2,7 @@ import PhotoDisplay from "./photo/[photoId]/PhotoDisplay";
 import type { PhotoData } from "./photo/[photoId]/page";
 import { ImageUrl } from "@/app/images/utils";
 export default async function Home() {
+  console.log(ImageUrl);
   const response = await fetch(ImageUrl);
 
   const images: PhotoData[] = await response.json().then((data) => data.images);
