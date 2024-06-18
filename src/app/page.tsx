@@ -1,22 +1,24 @@
-import PhotoDisplay from "./photo/[photoId]/PhotoDisplay"
-import type { PhotoData } from "./photo/[photoId]/page"
+import PhotoDisplay from "./photo/[photoId]/PhotoDisplay";
+import type { PhotoData } from "./photo/[photoId]/page";
 
 export default async function Home() {
+  const response = await fetch("http://localhost:3000/images", {
+    cache: "no-store",
+  });
 
-  const response = await fetch('http://localhost:3500/images', { cache: 'no-store' })
+  const images: PhotoData[] = await response.json().then((data) => data.images);
 
-  const images: PhotoData[] = await response.json()
+  console.log(images);
 
   if (!images?.length) {
-    return <h1>No Images to Display</h1>
+    return <h1>No Images to Display</h1>;
   }
 
   return (
     <main className="flex flex-col items-center gap-8 pb-8">
-      {images.map(photoData => (
+      {images.map((photoData) => (
         <PhotoDisplay key={photoData.id} photoData={photoData} />
       ))}
     </main>
-  )
-
+  );
 }
