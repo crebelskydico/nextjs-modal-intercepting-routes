@@ -1,4 +1,5 @@
 import PhotoDisplay from "./PhotoDisplay";
+import { ImageUrl } from "@/app/images/utils";
 
 export type PhotoData = {
   id: number;
@@ -12,10 +13,8 @@ type Props = {
   };
 };
 
-export default async function Photo({ params: { photoId } }: Props) {
-  const response = await fetch(`http://localhost:3000/images/${photoId}`, {
-    cache: "no-store",
-  });
+export default async function Photo({ params: { photoId } }: Readonly<Props>) {
+  const response = await fetch(`${ImageUrl}/${photoId}`);
 
   const photoData: PhotoData = await response.json();
 

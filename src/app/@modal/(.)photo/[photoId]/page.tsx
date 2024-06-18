@@ -1,6 +1,7 @@
 import PhotoDisplay from "@/app/photo/[photoId]/PhotoDisplay";
 import type { PhotoData } from "@/app/photo/[photoId]/page";
 import { Modal } from "@/components/Modal";
+import { ImageUrl } from "@/app/images/utils";
 
 type Props = {
   params: {
@@ -9,9 +10,7 @@ type Props = {
 };
 
 export default async function Photo({ params: { photoId } }: Props) {
-  const response = await fetch(`http://localhost:3000/images/${photoId}`, {
-    cache: "no-store",
-  });
+  const response = await fetch(`${ImageUrl}/${photoId}`);
 
   const photoData: PhotoData = await response.json();
 
