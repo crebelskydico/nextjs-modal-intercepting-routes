@@ -19,8 +19,6 @@ export default async function Photo({ params: { photoId } }: Props) {
 
   const photoData: PhotoData = await response.json();
 
-  console.log(photoData);
-
   if (!photoData?.id) {
     return <h1 className="text-center">No Photo Found for that ID.</h1>;
   }

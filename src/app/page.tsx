@@ -1,14 +1,12 @@
 import PhotoDisplay from "./photo/[photoId]/PhotoDisplay";
 import type { PhotoData } from "./photo/[photoId]/page";
-
+``;
 export default async function Home() {
   const response = await fetch("http://localhost:3000/images", {
     cache: "no-store",
   });
 
   const images: PhotoData[] = await response.json().then((data) => data.images);
-
-  console.log(images);
 
   if (!images?.length) {
     return <h1>No Images to Display</h1>;
