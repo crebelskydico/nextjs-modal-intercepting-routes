@@ -1,5 +1,5 @@
-import Images from '@/data/images.json';
+import {ImageData} from '@/data/images';
 
 export async function GET() {
-  return Response.json(Images)
+  return Response.json(ImageData)
 }
